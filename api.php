@@ -42,7 +42,15 @@
             return false;
             }
         }
-
+        function libra_cot(){
+            $data = $this->request('finance/quotations');
+    
+            if(!empty($data) && is_array($data['results']['currencies']['GBR']) ) {
+                $this->error = false;
+                return $data['results']['currencies']['GBR'];
+            }
+    
+       
    
     }
 ?>

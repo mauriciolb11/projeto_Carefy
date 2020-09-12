@@ -5,10 +5,14 @@ require_once 'api.php';
 
 $hg = new  MY_API(KEY_API);
 $dolar = $hg->dolar_cot();
+$euro = $hg->dolar_cot();
+$libra = $hg->dolar_cot();
 
 
 if ($hg->is_error() == false){
     $variation = ( $dolar['variation'] < 5 ) ? 'danger' : 'info';
+    $variation = ( $euro['variation'] < 5 ) ? 'danger' : 'info';
+    $variation = ( $libra['variation'] < 5 ) ? 'danger' : 'info';
 }
 
 ?>
@@ -36,6 +40,22 @@ if ($hg->is_error() == false){
                   <p>Dólar</p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($dolar['buy']);?></span></p>
+                    <?php else: ?>
+                   
+                    <?php endif; ?>
+              </div>
+              <div class="col-12 ">
+                  <p>euro</p>
+                    <?php if ($hg->is_error() == false): ?>
+                    <p><span class=""><?php echo ($euro['buy']);?></span></p>
+                    <?php else: ?>
+                   
+                    <?php endif; ?>
+              </div>
+              <div class="col-12 ">
+                  <p>libra</p>
+                    <?php if ($hg->is_error() == false): ?>
+                    <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($libr\['buy']);?></span></p>
                     <?php else: ?>
                    
                     <?php endif; ?>
