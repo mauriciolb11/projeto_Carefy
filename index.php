@@ -12,11 +12,11 @@ $obovespa = $hg->ibovespa_cot();
 
 
 if ($hg->is_error() == false){
-    $variation = ( $dolar['variation'] < 5 );
-    $variation = ( $euro['variation'] < 5 ) ;
-    $variation = ( $libra['variation'] < 5 );
-    $variation = ( $bitcoin['variation'] < 5 );
-    $variation = ( $ibovespa['variation'] < 5 );
+    $variation = ( $dolar['variation'] < 4.2 );
+    $variation = ( $euro['variation'] < 5.8 ) ;
+    $variation = ( $libra['variation'] < 5.2 );
+    $variation = ( $bitcoin['variation'] < 50000 );
+    $variation = ( $ibovespa['variation'] < 100000 );
 }
 }
 
@@ -41,23 +41,23 @@ if ($hg->is_error() == false){
           <p><h1>COTAÇÕES DO MERCADO</h1></p>
           <div class="row">
                 
-              <div class="col-12 ">
-                  <p>Dólar</p>
+              <<div class="col-6 border">
+                  <p><h6>Dólar (USD)</h6></p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($dolar['buy']);?></span></p>
                     <?php else: ?>
-                   
+                    <p>USD<span class="badge badge-pill badge-danger">A exibição </span></p>
                     <?php endif; ?>
               </div>
-              <div class="col-12 ">
-                  <p>euro</p>
+              <div class="col-6 border">
+                  <p><h6>Euro (EUR)</h6></p>
                     <?php if ($hg->is_error() == false): ?>
-                    <p><span class=""><?php echo ($euro['buy']);?></span></p>
+                    <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($euro['buy']);?></span></p>
                     <?php else: ?>
-                   
+                    <p>EUR<span class="badge badge-pill badge-danger">A exibição </span></p>
                     <?php endif; ?>
               </div>
-              <div class="col-12 ">
+              <div class="col-8 ">
                   <p>libra</p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($libr\['buy']);?></span></p>
