@@ -45,7 +45,22 @@
                 $this->error = false;
                 return $data['results']['currencies']['GBR'];
             }
+            function euro_cot(){
+                $data = $this->request('finance/quotations');
+        
+                if(!empty($data) && is_array($data['results']['currencies']['EUR']) ) {
+                    $this->error = false;
+                    return $data['results']['currencies']['EUR'];
+                }
     
+                function bitcoin_cot(){
+                    $data = $this->request('finance/quotations');
+            
+                    if(!empty($data) && is_array($data['results']['currencies']['BTC']) ) {
+                        $this->error = false;
+                        return $data['results']['currencies']['BTC'];
+                    }
+            
        
    
     }
