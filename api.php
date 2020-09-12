@@ -9,17 +9,20 @@
         }
 
         function request ( $endpoint = '', $params = array() ){
-            $uri = "https://api.hgbrasil.com/" . $endpoint . "?key=" . $this->key . "&format=0";
+            $uri = "https://api.hgbrasil.com/" . $endpoint . "?key=" . $this->key . "&format=json";
 
         if ( is_array($params)){
             foreach ($params as $key => $value){
                 if (empty($value)) continue;
                 $uri .=$key . '=' . urlencode($value) . '&';
             }
-
-        }else {
+            $uri = substr($uri, 0, -1);
+            $response = @file_get_contents($uri);
             $this->error = false;
-            return true;
+            return json_decode($response, true);
+        }else {
+            $this->error = true;
+            return false;
         }
     }
 
@@ -27,6 +30,7 @@
         return $this->error;
     }
 
+    //dólar
     function dolar_cot(){
         $data = $this->request('finance/quotations');
 
@@ -39,39 +43,70 @@
             }
         }
 
-        function libra_cot(){
-            $data = $this->request('finance/quotations');
-    
-            if(!empty($data) && is_array($data['results']['currencies']['GBR']) ) {
-                $this->error = false;
-                return $data['results']['currencies']['GBR'];
+    //euro
+    function euro_cot(){
+        $data = $this->request('finance/quotations');
+
+        if(!empty($data) && is_array($data['results']['currencies']['EUR']) ) {
+            $this->error = false;
+            return $data['results']['currencies']['EUR'];
+        }else {
+            $this->error = true;
+            return false;
             }
         }
-            function euro_cot(){
-                $data = $this->request('finance/quotations');
         
-                if(!empty($data) && is_array($data['results']['currencies']['EUR']) ) {
-                    $this->error = false;
-                    return $data['results']['currencies']['EUR'];
-                }
+    //libra
+    function libra_cot(){
+        $data = $this->request('finance/quotations');
+
+        if(!empty($data) && is_array($data['results']['currencies']['GBP']) ) {
+            $this->error = false;
+            return $data['results']['currencies']['GBP'];
+        }else {
+            $this->error = true;
+            return false;
             }
-                function bitcoin_cot(){
-                    $data = $this->request('finance/quotations');
-            
-                    if(!empty($data) && is_array($data['results']['currencies']['BTC']) ) {
-                        $this->error = false;
-                        return $data['results']['currencies']['BTC'];
-                    }
-                }
-                function ibovespa_cot(){
-                    $data = $this->request('finance/quotations');
-            
-                    if(!empty($data) && is_array($data['results']['currencies']['Ibovespa']) ) {
-                        $this->error = false;
-                        return $data['results']['currencies']['Ibovespa'];
-                    }
-                }
-       
-   
+        }
+
+    //bitcoin
+    function bitcoin_cot(){
+        $data = $this->request('finance/quotations');
+
+        if(!empty($data) && is_array($data['results']['currencies']['BTC']) ) {
+            $this->error = false;
+            return $data['results']['currencies']['BTC'];
+        }else {
+            $this->error = true;
+            return false;
+            }
+        }
+
+     //ibovespa
+    function ibovespa_cot(){
+        $data = $this->request('finance/quotations');
+
+        if(!empty($data) && is_array($data['results']['stocks']['IBOVESPA']) ) {
+            $this->error = false;
+            return $data['results']['stocks']['IBOVESPA'];
+        }else {
+            $this->error = true;
+            return false;
+            }
+        }
+
+     //nasdaq
+    function nasdaq_cot(){
+        $data = $this->request('finance/quotations');
+
+        if(!empty($data) && is_array($data['results']['stocks']['NASDAQ']) ) {
+            $this->error = false;
+            return $data['results']['stocks']['NASDAQ'];
+        }else {
+            $this->error = true;
+            return false;
+            }
+        }
+
     }
 ?>
