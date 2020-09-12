@@ -28,9 +28,22 @@ if ($hg->is_error() == false){
   <body>
       
 
+  <div class="container">
+          <p><h1>COTAÇÕES DO MERCADO</h1></p>
+          <div class="row">
+                
+              <div class="col-12 ">
+                  <p>Dólar</p>
+                    <?php if ($hg->is_error() == false): ?>
+                    <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($dolar['buy']);?></span></p>
+                    <?php else: ?>
+                   
+                    <?php endif; ?>
+              </div>
 
-
-
+              </div>
+      </div>
+      
 
 
 
