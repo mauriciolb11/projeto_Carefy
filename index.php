@@ -19,7 +19,7 @@ $nasdaq = $hg->nasdaq_cot();
      $variation = ( $ibovespa['variation'] < 100000 ) ? 'primary' : 'info';
      $variation = ( $nasdaq['variation'] < 70000 ) ? 'primary' : 'info';
  }
- 
+
 ?>
 
 <!doctype html>
@@ -45,7 +45,7 @@ $nasdaq = $hg->nasdaq_cot();
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($dolar['buy']);?></span></p>
                     <?php else: ?>
-                    <p>USD<span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
+                    <p><span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
                     <?php endif; ?>
               </div>
               <div class="col-4 border text-center">
@@ -53,7 +53,7 @@ $nasdaq = $hg->nasdaq_cot();
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($euro['buy']);?></span></p>
                     <?php else: ?>
-                    <p>EUR<span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
+                    <p><span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
                     <?php endif; ?>
               </div>
               <div class="col-4 border text-center">
@@ -61,7 +61,7 @@ $nasdaq = $hg->nasdaq_cot();
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($libra['buy']);?></span></p>
                     <?php else: ?>
-                    <p>GBP<span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
+                    <p><span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
                     <?php endif; ?>
               </div>
               <div class="col-12 border text-center">
@@ -77,7 +77,7 @@ $nasdaq = $hg->nasdaq_cot();
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($ibovespa['points']);?></span> pontos</p>
                     <?php else: ?>
-                    <p>ibovespa<span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
+                    <p><span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
                     <?php endif; ?>
               </div>
               <div class="col-6 border text-center">
@@ -85,7 +85,7 @@ $nasdaq = $hg->nasdaq_cot();
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($nasdaq['points']);?></span> pontos</p>
                     <?php else: ?>
-                    <p>nasdaq<span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
+                    <p><span class="badge badge-pill badge-danger">A exibição está indisponível neste momento</span></p>
                     <?php endif; ?>
               </div>
           </div>
