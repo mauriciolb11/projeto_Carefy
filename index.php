@@ -5,14 +5,19 @@ require_once 'api.php';
 
 $hg = new  MY_API(KEY_API);
 $dolar = $hg->dolar_cot();
-$euro = $hg->dolar_cot();
-$libra = $hg->dolar_cot();
+$euro = $hg->euro_cot();
+$libra = $hg->libra_cot();
+$bitcoin = $hg->bitcoin_cot();
+$obovespa = $hg->ibovespa_cot();
 
 
 if ($hg->is_error() == false){
-    $variation = ( $dolar['variation'] < 5 ) ? 'danger' : 'info';
-    $variation = ( $euro['variation'] < 5 ) ? 'danger' : 'info';
-    $variation = ( $libra['variation'] < 5 ) ? 'danger' : 'info';
+    $variation = ( $dolar['variation'] < 5 );
+    $variation = ( $euro['variation'] < 5 ) ;
+    $variation = ( $libra['variation'] < 5 );
+    $variation = ( $bitcoin['variation'] < 5 );
+    $variation = ( $ibovespa['variation'] < 5 );
+}
 }
 
 ?>
@@ -56,6 +61,22 @@ if ($hg->is_error() == false){
                   <p>libra</p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($libr\['buy']);?></span></p>
+                    <?php else: ?>
+                   
+                    <?php endif; ?>
+              </div>
+              <div class="col-2 ">
+                  <p>btc</p>
+                    <?php if ($hg->is_error() == false): ?>
+                    <p><span class=""><?php echo ($bitcoin['buy']);?></span></p>
+                    <?php else: ?>
+                   
+                    <?php endif; ?>
+              </div>
+              <div class="col-6 ">
+                  <p>ibovespa</p>
+                    <?php if ($hg->is_error() == false): ?>
+                    <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($ibovespa['buy']);?></span></p>
                     <?php else: ?>
                    
                     <?php endif; ?>
