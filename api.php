@@ -38,6 +38,7 @@
             return false;
             }
         }
+
         function libra_cot(){
             $data = $this->request('finance/quotations');
     
@@ -45,6 +46,7 @@
                 $this->error = false;
                 return $data['results']['currencies']['GBR'];
             }
+        }
             function euro_cot(){
                 $data = $this->request('finance/quotations');
         
@@ -52,7 +54,7 @@
                     $this->error = false;
                     return $data['results']['currencies']['EUR'];
                 }
-    
+            }
                 function bitcoin_cot(){
                     $data = $this->request('finance/quotations');
             
@@ -60,7 +62,15 @@
                         $this->error = false;
                         return $data['results']['currencies']['BTC'];
                     }
+                }
+                function ibovespa_cot(){
+                    $data = $this->request('finance/quotations');
             
+                    if(!empty($data) && is_array($data['results']['currencies']['Ibovespa']) ) {
+                        $this->error = false;
+                        return $data['results']['currencies']['Ibovespa'];
+                    }
+                }
        
    
     }

@@ -8,7 +8,7 @@ $dolar = $hg->dolar_cot();
 $euro = $hg->euro_cot();
 $libra = $hg->libra_cot();
 $bitcoin = $hg->bitcoin_cot();
-$obovespa = $hg->ibovespa_cot();
+$ibovespa = $hg->ibovespa_cot();
 
 
 if ($hg->is_error() == false){
@@ -18,7 +18,7 @@ if ($hg->is_error() == false){
     $variation = ( $bitcoin['variation'] < 50000 );
     $variation = ( $ibovespa['variation'] < 100000 );
 }
-}
+
 
 ?>
 
@@ -41,7 +41,7 @@ if ($hg->is_error() == false){
           <p><h1>COTAÇÕES DO MERCADO</h1></p>
           <div class="row">
                 
-              <<div class="col-6 border">
+              <<div class="col-6 border text-center">
                   <p><h6>Dólar (USD)</h6></p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($dolar['buy']);?></span></p>
@@ -49,7 +49,7 @@ if ($hg->is_error() == false){
                     <p>USD<span class="badge badge-pill badge-danger">A exibição </span></p>
                     <?php endif; ?>
               </div>
-              <div class="col-6 border">
+              <div class="col-6 border text-center">
                   <p><h6>Euro (EUR)</h6></p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($euro['buy']);?></span></p>
@@ -57,7 +57,7 @@ if ($hg->is_error() == false){
                     <p>EUR<span class="badge badge-pill badge-danger">A exibição </span></p>
                     <?php endif; ?>
               </div>
-              <div class="col-8 ">
+              <div class="col-12 border text-center">
                   <p>libra</p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($libr\['buy']);?></span></p>
@@ -65,7 +65,7 @@ if ($hg->is_error() == false){
                    
                     <?php endif; ?>
               </div>
-              <div class="col-2 ">
+              <div class="col-6 border text-center ">
                   <p>btc</p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class=""><?php echo ($bitcoin['buy']);?></span></p>
@@ -73,7 +73,7 @@ if ($hg->is_error() == false){
                    
                     <?php endif; ?>
               </div>
-              <div class="col-6 ">
+              <div class="col-6 border text-center">
                   <p>ibovespa</p>
                     <?php if ($hg->is_error() == false): ?>
                     <p><span class="badge badge-pill badge-<?php echo ($variation); ?>"><?php echo ($ibovespa['buy']);?></span></p>
