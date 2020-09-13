@@ -2,6 +2,8 @@
 
 require_once 'safe.php';
 require_once 'api.php';
+//require_once 'mysql.js';
+//require_once 'nodemon.json';
 
 $hg = new  MY_API(KEY_API);
 $dolar = $hg->dolar_cot();
